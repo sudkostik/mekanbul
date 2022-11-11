@@ -2,86 +2,76 @@ var express = require('express');
 var router = express.Router();
 
 const anaSayfa=function(req, res, next) {
-    res.render('anasayfa',
-     { 
-    "baslik": 'Anasayfa',
-     "sayfaBaslik":{
-        "siteAd":"MekanBul",
-        "slogan":"Civardaki Mekanlari Keşfet!"
-     },
-     "mekanlar":[
-        {
-
-            "ad":"Starbucks",
-            "puan":"3",
-            "adres":"Centrum Garden AVM",
-            "imkanlar":["Kahve","Çay","Kek"],
-            "mesafe":"10km"
-
-
-
-
+    res.render('anasayfa', 
+    { 
+        "baslik" : 'Anasayfa',
+        "sayfaBaslik" : {
+            "siteAd" : "MekanBul",
+            "slogan" : "Civardaki Mekanları Keşfet!"
         },
-        {
-
-            "ad":"Barida Kafe",
-            "puan":"4",
-            "adres":"Sdü Batı Kampüsü",
-            "imkanlar":["Kahve","Çay","Kek"],
-            "mesafe":"1km"
-
-
-        }
-
-
-
-     ]
-
-    
-    
+        "mekanlar" : [
+            {
+                "ad" : "Starbucks",
+                "puan" : "3",
+                "adres" : "Centrum Garden AVM",
+                "imkanlar" : ["Dünya Kahveleri", "Kekler", "Pastalar"],
+                "mesafe" : "10km"
+            },
+            {
+                "ad" : "Barida Kafe",
+                "puan" : "4",
+                "adres" : "Sdü Batı Kampüsü",
+                "imkanlar" : ["Kahve", "Çay", "Kek"],
+                "mesafe" : "8km"
+            }
+        ]
     });
 };
 
 const mekanBilgisi=function(req, res, next) {
-    res.render('mekanbilgisi',
-    { "baslik": 'Mekan Bilgisi',
-    "mekanBaslik":"Starbucksaaa",
-    "mekanDetay":{
-        "ad":"Starbucks",
-        "puan":"3",
-        "adres":"Centrum Garden",
-        "saatler":[
-            {
-            "günler":"Pazartesi-Cuma",
-            "acilis":"9:00-22:00",
-            "kapali":"false"
-
+    res.render('mekanbilgisi', 
+    { 
+        "baslik" : 'Mekan Bilgisi',
+        "mekanBaslik" : "Starbucks",
+        "mekanDetay" : {
+            "ad" : "Starbucks",
+            "puan" : "3",
+            "adres" : "Centrum Garden AVM",
+            "saatler" : [
+                {
+                    "gunler":"Pazartesi-Cuma",
+                    "acilis":"9:00",
+                    "kapanis":"23:00",
+                    "kapali": false
+                },
+                {
+                    "gunler":"Cumartesi-Pazar",
+                    "acilis":"10:00",
+                    "kapanis":"22:00",
+                    "kapali": false
+                }
+            ],
+            "imkanlar" : ["Dünya Kahveleri", "Kekler", "Pastalar"],
+            "koordinatlar" : {
+                "enlem" : "37.7",
+                "boylam" : "30.5"
             },
-            {
-                "günler":"Cumartesi-Pazar",
-                "acilis":"8:00-22:00",
-                "kapali":"false"
-    
-            },
-            
-        ],
-        "imkanlar":["Kahve","Çay","Kek"],
-        "Koordinatlar":{
-            "enlem":"37.7",
-            "boylam":"30.5"
-        },
-        "yorumlar":[
-            {
-                "yorumYapan":"Asım Sinan Yüksel",
-                "yorumMetni":"Berbat",
-                "tarih":"20 EKim 2022",
-                "puan":"1"
-            }
-        ]
-
-    }
-
-});
+            "yorumlar" : [
+                {
+                    "yorumYapan" : "Berk Ekim",
+                    "yorumMetni" : "Harika!",
+                    "tarih" : "21 Ekim 2021",
+                    "puan" : "4"
+                },
+                {
+                    "yorumYapan" : "Asım Sinan Yüksel",
+                    "yorumMetni" : "Berbat.",
+                    "tarih" : "14 Ekim 2022",
+                    "puan" : "3"
+                },
+            ]
+        }
+    });
 };
 
 const yorumEkle=function(req, res, next) {
