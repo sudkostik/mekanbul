@@ -17,7 +17,7 @@ block content
         .col-sm-12.list-group-item
           h4 
             -var mekanid=mekan._id
-            a(href='/mekan/'+mekanid)=mekan.ad
+            a(href='/mekan/'+mekanid) #{mekan.ad} 
             smal &nbsp;
             +puanOlustur(mekan.puan)
           span.badge.pull-right.badge-default #{mekan.mesafe}
@@ -26,4 +26,3 @@ block content
             each imkan in mekan.imkanlar
               span.label.label-warning #{imkan}
               | &nbsp;
-            

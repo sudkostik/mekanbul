@@ -71,30 +71,30 @@ const detaySayfasiOlustur = function (res, mekanDetaylari) {
     })
   }
   
-  const hataGoster = function (res, hata) {
-    var mesaj
+  var hataGoster = function(res, hata) {
+    var mesaj;
     if (hata.response.status == 404) {
-      mesaj = "404, Sayfa Bulunamadı!"
+        mesaj = "404, Sayfa bulunamadı!";
+    } else {
+        mesaj = hata.response.status + " hatası.";
     }
-    else {
-      mesaj = hata.response.status + " hatası"
-    }
-    res.status(hata.response.status)
+    res.status(hata.response.status);
     res.render('error', {
-      "mesaj": mesaj
+        "mesaj" : mesaj
+    });
+};
+
+
+  const mekanBilgisi = function(req, res) {
+    axios
+    .get(apiSecenekleri.sunucu + apiSecenekleri.apiYolu + req.params.mekanid)
+    .then(function(response) {
+        detaySayfasiOlustur(res, response.data);
     })
-  }
-
-
-  const mekanBilgisi = function (req, res, next) {
-    axios.get(apiSecenekleri.sunucu + apiSecenekleri.apiYolu + req.params.mekanid)
-      .then(function (response) {
-        detaySayfasiOlustur(res, response.data)
-      })
-      .catch(function (hata) {
-        hataGoster(res, hata)
-      })
-  }
+    .catch(function(hata) {
+        hataGoster(res, hata);
+    });
+};
 
 const yorumEkle=function(req, res, next) {
     res.render('yorumekle', { title: 'Yorum Ekle' });
