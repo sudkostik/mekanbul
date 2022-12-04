@@ -4,6 +4,7 @@ var router = express.Router();
 const axios=require("axios");
 var apiSecenekleri={
     sunucu:"https://mekanbul.berkekim.repl.co",
+    //sunucu: "http://localhost:3000",
     apiYolu:"/api/mekanlar/"
 }
 
